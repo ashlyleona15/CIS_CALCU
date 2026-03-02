@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="McDoBurger.css">
+    <title>McDo - Burger</title>
+</head>
+<body>
+    <header>
+        <img class="Logo" src="mcdo.png" alt="">
+
+        <!-- HAMBURGER BUTTON LEFT -->
+        <div id="menu-btn" class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!--Side-panel left-->>
+    <div id="nav-overlay" class="nav-overlay">
+    <div class="close-btn" id="close-menu">&times;</div>
+
+        <div class="overlay-links">
+            <h3>Menu</h3>
+            <a href="#Home">Home</a>
+            <a href="#Menu">Burgers</a>
+            <a href="#Story">Story</a>
+        </div>
+    </div>
+
+    <main>
+        <section id="Home" class="Welcome">
+            <div class="welcome animate">
+                <h1>Welcome to McDo Burger!</h1>    
+                <p class="des">Experience the best burgers in town with our limited time offers.</p>
+                <p class="lead">Juicy 100% beef, farm-fresh toppings, and our secret sauce — grilled to perfection and served hot.</p>
+                <div class="hero-ctas">
+                    <a class="btn primary" href="#menu">View Menu</a>
+                </div>
+            </div>
+            <div class="welcome-image animate">
+                <img id="burger-img" src="BigMac.png" alt="Delicious McDo Burger Illustration">
+            </div>
+        </section>
+
+    <!-- STORY / ABOUT SLIDER -->
+    <div class="story-slider">
+
+        <!-- STORY -->
+        <section id="Story" class="story-hero slide active">
+            <div class="story-overlay"></div>
+
+            <div class="story-content">
+                <h1 class="story-title">THE JOURNEY</h1>
+                <p class="story-subtitle">THE PROCESS • THE PHILOSOPHY</p>
+            </div>
+
+            <div class="story-arrows">
+                <button class="arrow-btn prev">&#10094;</button>
+                <button class="arrow-btn next">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="About" class="About slide">
+            <div class="About-overlay"></div>
+
+            <div class="A-Part">
+                <h1 class="About-Title">About McDoBurger</h1>
+                <p class="About-Desc">
+                    McDonald’s is one of the world’s most recognized fast-food brands,
+                    delivering quality, affordable meals since 1955.
+                </p>
+            </div>
+
+            <div class="story-arrows">
+                <button class="arrow-btn prev">&#10094;</button>
+                <button class="arrow-btn next">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- INDICATOR -->
+        <div class="indicators">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+        </div>
+
+    </div>
+
+    <!-- INDICATOR -->
+    <div class="indicators">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+    </div>
+
+</div>
+        </section>
+
+        <!--Burger Menu-->>
+        <section id="Menu" class="burger-slider">
+
+            <div class="burger-carousel animate">
+                <h1>Our Best Burgers</h1>
+
+                <div class="burger-group">
+                    <img class="side-burger animate-zoom" id="left-burger" src="McSpicyChickenFillet.png" alt="Left Burger">
+                    <img class="main-burger animate-zoom" id="center-burger" src="Doublecheeseburger.png" alt="Center Burger">
+                    <img class="side-burger animate-zoom" id="right-burger" src="BigMac.png" alt="Right Burger">
+                </div>
+
+                <div class="burger-info">
+                    <h2 id="burger-name">DoubleCheese Burger</h2>
+
+                    <p id="burger-desc">
+                        A delicious burger featuring a savory ham patty, melted cheese,
+                        fresh lettuce, and tangy pickles, all nestled in a soft bun.
+                    </p>
+
+                    <div class="controls">
+                        <button id="prev" aria-label="Previous burger">&#10094;</button>
+                        <button id="next" aria-label="Next burger">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+    </footer>
+
+<script src="McDoBurger.js"></script>
+</body>
+</html>

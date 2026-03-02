@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="Final.css" />
+    <title>McDo - Burger</title>
+</head>
+
+<body>
+    <header>
+        <div id="menu-btn" class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="logo-container">
+            <img class="Logo" src="mcdo.png" alt="McDo Logo" />
+            <h1 class="logo-text">Mcdo Burgers</h1>
+        </div>
+    </header>
+
+    <!-- SIDE PANEL -->
+    <div id="nav-overlay" class="nav-overlay">
+        <div class="close-btn" id="close-menu">&times;</div>
+        <div class="overlay-links">
+            <a href="#Home">Home</a>
+            <a href="#Menu">Burgers</a>
+            <a href="#About">About</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- HERO -->
+        <section id="Home" class="Welcome">
+            <div class="welcome">
+                <h1>Welcome to McDo Burger!</h1>
+                <p class="des">
+                    Experience the best burgers in town with our limited time offers.
+                </p>
+                <p class="lead">
+                Juicy 100% beef, farm-fresh toppings, and our secret sauce — grilled to
+                perfection and served hot.
+                </p>
+                <a class="btn primary" href="#Menu">View Menu</a>
+            </div>
+
+        </section>
+
+        <!-- SLIDER -->
+        <div class="slider">
+            <section id="About" class="section about active">
+                <div class="overlay"></div>
+
+                <div class="content right show">
+                    <h1>About Mcdo</h1>
+                    <p>
+                        McDonald's is one of the world's most recognized fast-food
+                        restaurants, known for serving quality, affordable meals.
+                    </p>
+                </div>
+
+                <button class="nav-btn left-btn" onclick="showValues()">←</button>
+                <button class="nav-btn right-btn" onclick="showStory()">➜</button>
+
+                <div class="indicator">
+                    <span class="line active"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </div>
+            </section>
+
+            <section class="section story">
+                <div class="overlay"></div>
+
+                <div class="content left">
+                    <h1>Mcdo Story</h1>
+                    <p>
+                        McDonald's journey began in 1955 and became a global icon.
+                    </p>
+                </div>
+
+                <button class="nav-btn left-btn" onclick="showAbout()">←</button>
+                <button class="nav-btn right-btn" onclick="showValues()">➜</button>
+
+                <div class="indicator">
+                    <span class="line"></span>
+                    <span class="line active"></span>
+                    <span class="line"></span>
+                </div>
+            </section>
+
+            <section class="section values">
+                <div class="overlay"></div>
+
+                <div class="content right">
+                    <h1>Our Values</h1>
+                    <p>
+                        Quality, affordability, and customer satisfaction drive everything we do.
+                    </p>
+                </div>
+
+                <button class="nav-btn left-btn" onclick="showStory()">←</button>
+                <button class="nav-btn right-btn" onclick="showAbout()">➜</button>
+
+                <div class="indicator">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line active"></span>
+                </div>
+            </section>
+        </div>
+
+        <!-- MENU HERO -->
+        <section id="Menu" class="hero">
+            <div class="hero-left">
+                <img src="McCrispyBurger.png" class="burger main" />
+                <img src="McCrispyBurger.png" class="burger background" />
+
+                <button class="arrow left">‹</button>
+                <button class="arrow right">›</button>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-content">
+                    <h4>CLASSIC FAVORITE</h4>
+                    <h1>McCrispy Burger</h1>
+                    <p>Crispy chicken, fresh lettuce & signature sauce.</p>
+
+                    <button id="ingredientsBtn" class="btn-outline">
+                        View Ingredients
+                    </button>
+
+                    <div class="bottom-btn">
+                        <button id="fullMenuBtn" class="btn-outline small">
+                            VIEW FULL MENU
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- FULL BURGER MENU PANEL -->
+        <div id="full-menu" class="full-menu">
+            <button id="backHero" class="close-menu">×</button>
+
+            <div class="menu-grid">
+                <div class="menu-card">     
+                    <img src="McCrispyBurger.png" alt="McCrispy Burger" />
+                    <h3>McCrispy Burger</h3>
+                </div>
+
+                <div class="menu-card">
+                    <img src="BigMac.png" alt="Big Mac" />
+                    <h3>Big Mac</h3>
+                </div>
+
+                <div class="menu-card">
+                    <img src="Quarterpound.png" alt="Quarter Pounder" />
+                    <h3>Quarter Pounder</h3>
+                </div>
+
+                <div class="menu-card">
+                    <img src="McHamCheeseBurger.png" alt="McHamCheeseBurger" />
+                    <h3>McHamCheeseBurger</h3>
+                </div>
+
+                <div class="menu-card">
+                    <img src="McSpicyChickenFillet.png" alt="McSpicyChickenFillet" />
+                    <h3>McSpicyChickenFillet</h3>
+                </div>
+
+                <div class="menu-card">
+                    <img src="filet1.png" alt="Filet-O-Fish" />
+                    <h3>Filet-O-Fish</h3>
+                </div>
+            </div>
+        </div>
+
+        </section>
+
+        <!-- INGREDIENTS MODAL -->
+        <div id="ingredients-modal" class="ingredients-modal">
+            <div class="ingredients-box">
+                <span class="close-ingredients">&times;</span>
+                <h2 id="ingredients-title"></h2>
+                <ul id="ingredients-list"></ul>
+            </div>
+        </div>
+
+
+    </main>
+
+<script src="Final.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>McDo Burgers</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+<header>
+  <div id="menu-btn" class="menu-btn">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="logo-container">
+    <img class="Logo" src="mcdo.png" alt="McDo Logo">
+    <h1 class="logo-text">Mcdo Burgers</h1>
+  </div>
+</header>
+
+<!-- SIDE NAV -->
+<div id="nav-overlay" class="nav-overlay">
+  <div id="close-menu" class="close-btn">&times;</div>
+  <div class="overlay-links">
+    <a href="#Home">Home</a>
+    <a href="#Menu">Burgers</a>
+    <a href="#About">About</a>
+  </div>
+</div>
+
+<main>
+
+<!-- WELCOME -->
+<section id="Home" class="Welcome">
+  <div class="welcome">
+    <h1>Welcome to McDo Burger!</h1>
+    <p class="des">Best burgers in town</p>
+    <p class="lead">Juicy beef, fresh toppings, signature sauces.</p>
+    <a href="#Menu" class="btn">View Menu</a>
+  </div>
+</section>
+
+<!-- HERO MENU -->
+<section id="Menu" class="hero">
+
+  <!-- LEFT -->
+  <div class="hero-left">
+    <img class="burger main" src="McCrispyBurger.png" alt="Burger">
+    <button class="arrow left">‹</button>
+    <button class="arrow right">›</button>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="hero-right">
+
+    <!-- HERO CONTENT -->
+    <div class="hero-content">
+      <h4>CLASSIC FAVORITE</h4>
+      <h1>McCrispy Burger</h1>
+      <p>Crispy chicken, fresh lettuce & signature sauce.</p>
+
+      <button class="btn-outline" id="viewMoreBtn">View more</button>
+
+      <div class="bottom-btn">
+        <button id="fullMenuBtn" class="btn-outline small">
+          VIEW FULL MENU
+        </button>
+      </div>
+    </div>
+
+    <!-- FULL MENU -->
+    <div id="full-menu" class="full-menu">
+      <button id="backHero" class="btn-outline small">← BACK</button>
+      <h2>BURGER MENU</h2>
+      <div class="menu-grid"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INGREDIENTS MODAL -->
+<div id="ingredients-modal" class="ingredients-modal">
+  <div class="ingredients-box">
+    <span class="close-ingredients">&times;</span>
+    <h2 id="ingredients-title"></h2>
+    <ul id="ingredients-list"></ul>
+  </div>
+</div>
+
+</main>
+
+<script src="index.js"></script>
+</body>
+</html>
