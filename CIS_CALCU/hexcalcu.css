@@ -1,3 +1,4 @@
+/* RESET */
 * {
     box-sizing: border-box;
     font-family: Arial, sans-serif;
@@ -6,19 +7,19 @@
 /* PAGE LAYOUT */
 body {
     margin: 0;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     background: #020617;
 }
 
 /* VIDEO BACKGROUND */
 .bg-video {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -36,28 +37,27 @@ h2 {
 /* CALCULATOR CONTAINER */
 .calculator {
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
     gap: 20px;
     padding: 20px;
     background: #0b132b;
     border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     width: max-content;
+    z-index: 1;
 }
 
-/* DISPLAY PANEL (RIGHT) */
+/* DISPLAY PANEL */
 .display {
     display: flex;
     flex-direction: column;
-    gap: 12px;          /* space between main display & conversions */
+    gap: 14px;
 }
 
 /* MAIN DISPLAY */
 .main-display {
     width: 260px;
     height: 55px;
-    border-radius: 12px;
+    border-radius: 14px;
     border: none;
     padding: 12px;
     font-size: 22px;
@@ -67,18 +67,24 @@ h2 {
     text-align: right;
 }
 
-/* BASE CONVERSION GROUP */
+/* BASE CONVERSIONS */
 .base-conversions {
     display: flex;
     flex-direction: column;
-    gap: 10px;          /* space between HEX / DEC / BIN */
+    gap: 8px; /* FIXED GAP */
 }
 
-/* BASE CONVERSION FIELD */
+/* FIELD GROUP */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* input ↔ label spacing */
+}
+
+/* INPUTS */
 .field input {
     width: 260px;
     height: 40px;
-    gap: 10px;
     border-radius: 10px;
     border: none;
     padding: 10px;
@@ -86,15 +92,24 @@ h2 {
     font-size: 16px;
 }
 
-/* KEYPAD (LEFT) */
+/* LABELS */
+.field label {
+    margin: 0;
+    font-size: 12px;
+    color: #e5e7eb;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+/* KEYPAD */
 .keypad {
     display: grid;
     grid-template-columns: repeat(4, 64px);
     gap: 16px;
-    padding: 10px;
+    padding: 12px;
     background: rgba(255,255,255,0.06);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
+    border-radius: 22px;
+    backdrop-filter: blur(12px);
     box-shadow: inset 0 0 20px rgba(255,255,255,0.05);
 }
 
@@ -107,7 +122,7 @@ h2 {
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
-    color: #0f172a;
+    color: #000000;
 
     background: linear-gradient(145deg, #f9fafb, #e5e7eb);
 
@@ -116,8 +131,8 @@ h2 {
         0 14px 25px rgba(0,0,0,0.35);
 
     transition:
-        transform 0.1s ease,
-        box-shadow 0.1s ease,
+        transform 0.12s ease,
+        box-shadow 0.12s ease,
         background 0.25s ease;
 }
 
@@ -135,21 +150,17 @@ h2 {
         0 6px 12px rgba(0,0,0,0.35);
 }
 
-/* OPERATOR KEYS */
-.keypad button:nth-child(4n),
-.keypad button:contains("+"),
-.keypad button:contains("-"),
-.keypad button:contains("X"),
-.keypad button:contains("/") {
-    background: linear-gradient(145deg, #38bdf8, #0ea5e9);
-    color: white;
+/* CLEAR BUTTON */
+.keypad .clear {
+    background: linear-gradient(145deg, #f87171, #dc2626);
+    color: rgb(10, 10, 10);
     box-shadow:
-        0 8px 0 #0284c7,
-        0 14px 25px rgba(14,165,233,0.45);
+        0 8px 0 #b91c1c,
+        0 14px 25px rgba(248,113,113,0.45);
 }
 
-/* EQUALS */
-.keypad button:contains("=") {
+/* EQUALS BUTTON */
+.keypad button:nth-child(16) {
     background: linear-gradient(145deg, #22c55e, #16a34a);
     color: white;
     box-shadow:
@@ -157,18 +168,45 @@ h2 {
         0 14px 25px rgba(34,197,94,0.45);
 }
 
-/* CLEAR & BACKSPACE */
-.keypad button:contains("C"),
-.keypad button:contains("←") {
-    background: linear-gradient(145deg, #f87171, #dc2626);
-    color: white;
-    box-shadow:
-        0 8px 0 #b91c1c,
-        0 14px 25px rgba(248,113,113,0.45);
-}
-
 /* ACCESSIBILITY */
 .keypad button:focus-visible {
     outline: 3px solid #22d3ee;
     outline-offset: 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+    .calculator {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .display {
+        width: 100%;
+        align-items: center;
+    }
+
+    .main-display,
+    .field input {
+        width: 100%;
+    }
+
+    .base-conversions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .field {
+        width: 48%;
+    }
+}
+
+/* FOOTER */
+footer {
+    margin-top: 20px;
+    color: #94a3b8;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
