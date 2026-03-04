@@ -98,7 +98,7 @@ buttons.forEach(button => {
     button.addEventListener("click", () => {
         const value = button.textContent.trim().toUpperCase();
 
-        // ✅ CLEAR (ONLY the button with class="clear")
+        // CLEAR (ONLY the button with class="clear")
         if (button.classList.contains("clear")) {
             currentValue = "";
             previousValue = "";
