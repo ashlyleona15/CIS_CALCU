@@ -1,212 +1,143 @@
 /* RESET */
-* {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+*{
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
 
-/* PAGE LAYOUT */
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: #020617;
+/* PAGE */
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:#020617;
 }
 
 /* VIDEO BACKGROUND */
-.bg-video {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+.bg-video{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
 }
 
 /* TITLE */
-h2 {
-    color: white;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    font-weight: bold;
+h2{
+    color:white;
+    margin-bottom:20px;
+    letter-spacing:2px;
 }
 
-/* CALCULATOR CONTAINER */
-.calculator {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    background: #0b132b;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    width: max-content;
-    z-index: 1;
+/* CALCULATOR */
+.calculator{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+    padding:25px;
+    background:#0b132b;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
-/* DISPLAY PANEL */
-.display {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+/* DISPLAY */
+.display{
+    width:100%;
 }
 
 /* MAIN DISPLAY */
-.main-display {
-    width: 260px;
-    height: 55px;
-    border-radius: 14px;
-    border: none;
-    padding: 12px;
-    font-size: 22px;
-    font-weight: bold;
-    background: #1f2937;
-    color: #ffffff;
-    text-align: right;
-}
-
-/* BASE CONVERSIONS */
-.base-conversions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px; /* FIXED GAP */
-}
-
-/* FIELD GROUP */
-.field {
-    display: flex;
-    flex-direction: column;
-    gap: 4px; /* input ↔ label spacing */
-}
-
-/* INPUTS */
-.field input {
-    width: 260px;
-    height: 40px;
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
-    background: #cfd2d6;
-    font-size: 16px;
-}
-
-/* LABELS */
-.field label {
-    margin: 0;
-    font-size: 12px;
-    color: #e5e7eb;
-    letter-spacing: 1px;
-    text-align: left;
+.main-display{
+    width:355px;
+    height:60px;
+    border-radius:14px;
+    border:none;
+    padding:12px;
+    font-size:24px;
+    font-weight:bold;
+    text-align:right;
+    background:#ffffff;
+    color:#000;
 }
 
 /* KEYPAD */
-.keypad {
-    display: grid;
-    grid-template-columns: repeat(4, 64px);
-    gap: 16px;
-    padding: 12px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 22px;
-    backdrop-filter: blur(12px);
-    box-shadow: inset 0 0 20px rgba(255,255,255,0.05);
+.keypad{
+    display:grid;
+    grid-template-columns:repeat(4,70px);
+    grid-auto-rows:70px;
+    gap:15px;
+    padding:15px;
+    background:rgba(255,255,255,0.05);
+    border-radius:20px;
+    backdrop-filter:blur(12px);
 }
 
-/* BASE BUTTON */
-.keypad button {
-    width: 64px;
-    height: 64px;
-    border-radius: 18px;
-    border: none;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-    color: #000000;
+/* BUTTONS */
+.keypad button{
+    border:none;
+    border-radius:18px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
 
-    background: linear-gradient(145deg, #f9fafb, #e5e7eb);
+    background:linear-gradient(145deg,#f9fafb,#e5e7eb);
 
     box-shadow:
         0 8px 0 #cbd5e1,
-        0 14px 25px rgba(0,0,0,0.35);
+        0 12px 20px rgba(0,0,0,0.35);
 
-    transition:
-        transform 0.12s ease,
-        box-shadow 0.12s ease,
-        background 0.25s ease;
+    transition:all .15s ease;
 }
 
-/* HOVER */
-.keypad button:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(145deg, #ffffff, #e2e8f0);
-}
-
-/* PRESS */
-.keypad button:active {
-    transform: translateY(5px);
+.keypad button:active{
+    transform: translateY(6px);
     box-shadow:
-        0 3px 0 #cbd5e1,
-        0 6px 12px rgba(0,0,0,0.35);
+        0 2px 0 #cbd5e1,
+        0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* CLEAR BUTTON */
-.keypad .clear {
-    background: linear-gradient(145deg, #f87171, #dc2626);
-    color: rgb(10, 10, 10);
-    box-shadow:
-        0 8px 0 #b91c1c,
-        0 14px 25px rgba(248,113,113,0.45);
+.keyboard button.clear {
+    background-color: red;
 }
 
-/* EQUALS BUTTON */
-.keypad button:nth-child(16) {
-    background: linear-gradient(145deg, #22c55e, #16a34a);
-    color: white;
-    box-shadow:
-        0 8px 0 #15803d,
-        0 14px 25px rgba(34,197,94,0.45);
+.keypad button:nth-child(4){
+    background: linear-gradient(145deg,#fc3b00,#f59e0b);
+    color: #000;
 }
 
-/* ACCESSIBILITY */
-.keypad button:focus-visible {
-    outline: 3px solid #22d3ee;
-    outline-offset: 4px;
+.keypad button:nth-child(20){
+    background: linear-gradient(145deg,#22c55e,#16a34a);
+    color:white;
 }
 
-/* RESPONSIVE */
-@media (max-width: 500px) {
-    .calculator {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .display {
-        width: 100%;
-        align-items: center;
-    }
-
-    .main-display,
-    .field input {
-        width: 100%;
-    }
-
-    .base-conversions {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .field {
-        width: 48%;
-    }
+.keypad button:nth-child(16){
+    background: linear-gradient(145deg,#f87171,#dc2626);
+    color:white;
 }
 
-/* FOOTER */
-footer {
-    margin-top: 20px;
-    color: #94a3b8;
-    font-size: 14px;
-    letter-spacing: 1px;
+.keypad button:nth-child(8){
+    background: linear-gradient(145deg,#fc3b00,#f59e0b);
+    color: #000;
+}
+.keypad button:nth-child(12){
+    background: linear-gradient(145deg,#fc3b00,#f59e0b);
+    color: #000;
+}
+/* ZERO BUTTON */
+.zero{
+    grid-column:span 4;
+}
+
+/* NAMES */
+.names{
+    text-align:center;
+    font-size:13px;
+    color:#94a3b8;
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:10px;
+    width:100%;
 }
