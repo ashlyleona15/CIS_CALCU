@@ -2,6 +2,7 @@
 const mainDisplay = document.getElementById("mainDisplay");
 const hexDisplay  = document.getElementById("hex");
 const decDisplay  = document.getElementById("dec");
+const octDisplay  = document.getElementById("oct");
 const binDisplay  = document.getElementById("bin");
 const buttons = document.querySelectorAll(".keypad button");
 
@@ -31,8 +32,9 @@ function decToOct(dec) {
     return dec.toString(8);
 }
 
-function removeLeadingZeros(str) {
-    return str.replace(/^0+(?=\d)/, ''); // remove leading zeros but keep "0" if alone
+function clean(value) {
+    if (!value) return "";
+    return value.replace(/^0+(?!$)/, "");
 }
 
 // ===== UPDATE DISPLAY =====
@@ -40,16 +42,18 @@ function updateDisplays(hexValue) {
     if (!hexValue) {
         hexDisplay.value = "";
         decDisplay.value = "";
+        octDisplay.value = "";
         binDisplay.value = "";
         return;
     }
 
     const dec = hexToDec(hexValue);
+    if (isNaN(dec)) return;
 
-    // Remove extra 0s
-    hexDisplay.value = removeLeadingZeros(hexValue.toUpperCase());
-    decDisplay.value = removeLeadingZeros(dec.toString());
-    binDisplay.value = removeLeadingZeros(decToBin(dec));
+    hexDisplay.value = clean(hexValue.toUpperCase());
+    decDisplay.value = clean(dec.toString());
+    octDisplay.value = clean(decToOct(dec));
+    binDisplay.value = clean(decToBin(dec));
 }
 
 // ===== COMPUTE =====
@@ -61,9 +65,15 @@ function compute() {
     let result;
 
     switch (operator) {
-        case "+": result = a + b; break;
-        case "-": result = a - b; break;
-        case "X": result = a * b; break;
+        case "+":
+            result = a + b;
+            break;
+        case "-":
+            result = a - b;
+            break;
+        case "X":
+            result = a * b;
+            break;
         case "/":
             if (b === 0) {
                 alert("Cannot divide by zero");
@@ -79,17 +89,17 @@ function compute() {
     previousValue = "";
     operator = "";
 
-    mainDisplay.value = removeLeadingZeros(currentValue);
+    mainDisplay.value = clean(currentValue);
     updateDisplays(currentValue);
 }
 
 // ===== BUTTON HANDLING =====
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-        let value = button.textContent.trim().toUpperCase();
+        const value = button.textContent.trim().toUpperCase();
 
-        // CLEAR
-        if (value === "C") {
+        // ✅ CLEAR (ONLY the button with class="clear")
+        if (button.classList.contains("clear")) {
             currentValue = "";
             previousValue = "";
             operator = "";
@@ -101,7 +111,7 @@ buttons.forEach(button => {
         // BACKSPACE
         if (value === "←") {
             currentValue = currentValue.slice(0, -1);
-            mainDisplay.value = removeLeadingZeros(currentValue);
+            mainDisplay.value = clean(currentValue);
             updateDisplays(currentValue);
             return;
         }
@@ -121,10 +131,10 @@ buttons.forEach(button => {
             return;
         }
 
-        // HEX INPUT
+        // HEX INPUT (0–9, A–F INCLUDING C)
         if (isHexChar(value)) {
-            currentValue += value.toUpperCase();
-            mainDisplay.value = removeLeadingZeros(currentValue);
+            currentValue += value;
+            mainDisplay.value = clean(currentValue);
             updateDisplays(currentValue);
         }
     });
