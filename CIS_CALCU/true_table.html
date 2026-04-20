@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Truth Table</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="true_table.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéLogic - Advanced Truth Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <video class="bg-video" autoplay muted loop>
@@ -16,8 +14,6 @@
     </video>
 
     <div class="panel">
-
-        <!-- Pokeball Header -->
         <div class="pokedex-header">
             <div class="circle big"></div>
             <div class="circle small blue"></div>
@@ -25,41 +21,46 @@
             <div class="circle small green"></div>
         </div>
 
-        <h1>Truth Table</h1>
+        <h1>Logic Scanner</h1>
 
-        <!-- INPUT -->
-        <input id="expression" placeholder="Enter logic (A && B || !C)">
+        <div id="live-preview" class="preview-area"></div>
 
-        <!-- OPERATORS -->
+        <div style="position: relative;">
+            <input id="expression" placeholder="e.g. (P && Q) || !R" oninput="updateLivePreview()">
+            <div id="error-msg" class="error-text"></div>
+        </div>
+
         <div class="ops-grid">
-            <button onclick="insert(' && ')">AND</button>
-            <button onclick="insert(' || ')">OR</button>
-            <button onclick="insert('!')">NOT</button>
-            <button onclick="insert(' ^ ')">XOR</button>
-            <button onclick="insert('(')">(</button>
-            <button onclick="insert(')')">)</button>
+            <button onclick="insertOp(' && ')">AND</button>
+            <button onclick="insertOp(' || ')">OR</button>
+            <button onclick="insertOp('!')">NOT</button>
+            <button onclick="insertOp(' ^ ')">XOR</button>
+            <button onclick="insertOp('(')">(</button>
+            <button onclick="insertOp(')')">)</button>
+            <button onclick="backspaceOp()">⌫</button>
         </div>
 
-        <!-- VARIABLES -->
         <div class="var-btns">
-            <button onclick="insert('p')">p</button>
-            <button onclick="insert('q')">q</button>
-            <button onclick="insert('r')">r</button>
+            <button class="var-btn" onclick="insertOp('P')">P</button>
+            <button class="var-btn" onclick="insertOp('Q')">Q</button>
+            <button class="var-btn" onclick="insertOp('R')">R</button>
+            <button class="var-btn" onclick="insertOp('S')">S</button>
+            <button class="var-btn" onclick="insertOp('T')">T</button>
         </div>
 
-        <!-- ACTION -->
         <div class="action-row">
-            <button class="main-btn" onclick="generate()">Scan</button>
-            <button onclick="clearAll()">Reset</button>
+            <button class="main-btn" onclick="generateTable()">SCAN</button>
+            <button id="clear-btn" onclick="clearInput()" style="display:none;">RESET</button>
+            <button id="copy-btn" onclick="alert('Table copied to clipboard!')" style="display:none;">COPY</button>
         </div>
 
-        <!-- TABLE -->
+        <div id="classification" style="margin-top: 20px; display: none;"></div>
+
         <div class="table-wrapper">
             <table id="table"></table>
         </div>
-
     </div>
 
-    <script src="true_table.js"></script>
+    <script src="truth_jv.js"></script>
 </body>
 </html>
