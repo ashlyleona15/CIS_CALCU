@@ -4,63 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PokéLogic - Advanced Truth Table</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <video class="bg-video" autoplay muted loop>
-        <source src="night-cycle-to-eterna-pokemon-diamond-and-pearl-pixel-moewalls-com.mp4" type="video/mp4">
-    </video>
+<video class="bg-video" autoplay muted loop>
+    <source src="night-cycle-to-eterna-pokemon-diamond-and-pearl-pixel-moewalls-com.mp4" type="video/mp4">
+</video>
 
-    <div class="panel">
-        <div class="pokedex-header">
-            <div class="circle big"></div>
-            <div class="circle small blue"></div>
-            <div class="circle small yellow"></div>
-            <div class="circle small green"></div>
-        </div>
+<div class="panel">
 
-        <h1>Logic Scanner</h1>
+    <h1>Logic Scanner</h1>
 
-        <div id="live-preview" class="preview-area"></div>
+    <div id="live-preview" class="preview-area"></div>
 
-        <div style="position: relative;">
-            <input id="expression" placeholder="e.g. (P && Q) || !R" oninput="updateLivePreview()">
-            <div id="error-msg" class="error-text"></div>
-        </div>
-
-        <div class="ops-grid">
-            <button onclick="insertOp(' && ')">AND</button>
-            <button onclick="insertOp(' || ')">OR</button>
-            <button onclick="insertOp('!')">NOT</button>
-            <button onclick="insertOp(' ^ ')">XOR</button>
-            <button onclick="insertOp('(')">(</button>
-            <button onclick="insertOp(')')">)</button>
-            <button onclick="backspaceOp()">⌫</button>
-        </div>
-
-        <div class="var-btns">
-            <button class="var-btn" onclick="insertOp('P')">P</button>
-            <button class="var-btn" onclick="insertOp('Q')">Q</button>
-            <button class="var-btn" onclick="insertOp('R')">R</button>
-            <button class="var-btn" onclick="insertOp('S')">S</button>
-            <button class="var-btn" onclick="insertOp('T')">T</button>
-        </div>
-
-        <div class="action-row">
-            <button class="main-btn" onclick="generateTable()">SCAN</button>
-            <button id="clear-btn" onclick="clearInput()" style="display:none;">RESET</button>
-            <button id="copy-btn" onclick="alert('Table copied to clipboard!')" style="display:none;">COPY</button>
-        </div>
-
-        <div id="classification" style="margin-top: 20px; display: none;"></div>
-
-        <div class="table-wrapper">
-            <table id="table"></table>
-        </div>
+    <div>
+        <input id="expression" placeholder="e.g. (P ∧ Q) → ¬R" oninput="updateLivePreview()">
+        <div id="error-msg" class="error-text"></div>
     </div>
 
-    <script src="truth_jv.js"></script>
+    <!-- OPERATORS -->
+    <div class="ops-grid">
+        <button onclick="insertOp(' ∧ ')">∧</button>
+        <button onclick="insertOp(' ∨ ')">∨</button>
+        <button onclick="insertOp('¬')">¬</button>
+        <button onclick="insertOp(' ⊕ ')">⊕</button>
+        <button onclick="insertOp(' → ')">→</button>
+        <button onclick="insertOp(' ↔ ')">↔</button>
+        <button onclick="insertOp('(')">(</button>
+        <button onclick="insertOp(')')">)</button>
+        <button onclick="backspaceOp()">⌫</button>
+    </div>
+
+    <!-- VARIABLES -->
+    <div class="var-btns">
+        <button class="var-btn" onclick="insertOp('P')">P</button>
+        <button class="var-btn" onclick="insertOp('Q')">Q</button>
+        <button class="var-btn" onclick="insertOp('R')">R</button>
+        <button class="var-btn" onclick="insertOp('S')">S</button>
+        <button class="var-btn" onclick="insertOp('T')">T</button>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="action-row">
+        <button onclick="generateTable()">SCAN</button>
+        <button onclick="clearInput()">RESET</button>
+    </div>
+
+    <div id="classification" style="margin-top: 20px;"></div>
+
+    <table id="table"></table>
+
+</div>
+
+<script src="truth_jv.js"></script>
+
 </body>
 </html>
